@@ -1,0 +1,11 @@
+(executable
+  (name chasa)
+  (modes byte_complete exe)
+  (modules Chasa)
+  (flags
+    (:standard))
+  (libraries ast))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

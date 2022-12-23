@@ -1,0 +1,9 @@
+(library
+  (name frontend)
+  (flags
+    (:standard -open Ast))
+  (libraries ast clangml))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

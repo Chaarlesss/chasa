@@ -1,0 +1,9 @@
+(library
+  (name ast)
+  (flags
+    (:standard))
+  (libraries))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))
