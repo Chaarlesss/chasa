@@ -1,11 +1,11 @@
-open Context
+open ClangContext
 
 let default_ctx trsl_unit =
   {
     trsl_unit;
-    decl_parser= ClangDecl.parse_decl;
-    stmt_parser= ClangStmt.parse_stmt;
-    expr_parser= ClangExpr.parse_expr;
+    decl_parser= ClangDeclParser.parse_decl;
+    stmt_parser= ClangStmtParser.parse_stmt;
+    expr_parser= ClangExprParser.parse_expr;
   }
 
 let parse src =

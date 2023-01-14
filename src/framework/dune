@@ -1,0 +1,9 @@
+(library
+  (name analyzer)
+  (flags
+    (:standard -open Lib -open Domain))
+  (libraries lib domain))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

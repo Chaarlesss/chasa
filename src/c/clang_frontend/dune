@@ -1,0 +1,10 @@
+(library
+  (name clangFrontend)
+  (public_name chasa.c.clangFrontend)
+  (flags
+    (:standard))
+  (libraries clangml))
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

@@ -1,8 +1,8 @@
 (library
-  (name ast)
+  (name domain)
   (flags
-    (:standard))
-  (libraries))
+    (:standard -open Lib))
+  (libraries lib))
 
 (env
   (dev
