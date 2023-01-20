@@ -27,7 +27,7 @@ let parse_while_stmt ctx cursor =
 
 let parse_expr ctx cursor =
   let expr = ctx.expr_parser ctx cursor in
-  mk_expr expr
+  mk_expr_stmt expr
 
 let parse_stmt ctx cursor =
   let kind =

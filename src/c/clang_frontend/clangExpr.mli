@@ -23,17 +23,17 @@ module type S = sig
   type expr
   type decl
 
-  val mk_integer_literal: int -> expr_kind
+  val mk_integer_literal_expr: int -> expr_kind
 
-  val mk_decl_ref: identifier -> expr_kind
+  val mk_decl_ref_expr: identifier -> expr_kind
 
-  val mk_implicit_cast: expr -> expr_kind
+  val mk_implicit_cast_expr: expr -> expr_kind
 
-  val mk_unary_operator: unop -> expr -> expr_kind
+  val mk_unary_operator_expr: unop -> expr -> expr_kind
 
-  val mk_binary_operator: binop -> expr -> expr -> expr_kind
+  val mk_binary_operator_expr: binop -> expr -> expr -> expr_kind
 
-  val mk_assign: expr -> expr -> expr_kind
+  val mk_assign_expr: expr -> expr -> expr_kind
 
   val expr_with_loc: expr_kind -> Clang.cxcursor -> expr
 

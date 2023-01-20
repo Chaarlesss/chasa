@@ -10,7 +10,7 @@ module type S = sig
 
   val mk_decl_stmt: decl list -> stmt_kind
 
-  val mk_expr: expr -> stmt_kind
+  val mk_expr_stmt: expr -> stmt_kind
 
   val mk_if_stmt: expr -> stmt -> stmt option -> stmt_kind
 

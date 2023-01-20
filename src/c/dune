@@ -1,6 +1,5 @@
 (library
   (name c)
-  (public_name chasa.c)
   (flags
     (:standard))
   (libraries clangFrontend))

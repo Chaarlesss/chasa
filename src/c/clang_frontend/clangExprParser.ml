@@ -25,7 +25,7 @@ let parse_binary_operator kind =
 let parse_integer_literal cursor =
   Clang.ext_integer_literal_get_value cursor |>
   Clang.ext_int_get_sext_value |>
-  mk_integer_literal
+  mk_integer_literal_expr
 
 let parse_unary_operator ctx cursor =
   let child =
@@ -36,7 +36,7 @@ let parse_unary_operator ctx cursor =
   let unopkind = Clang.ext_unary_operator_get_opcode cursor in
   let child = ctx.expr_parser ctx child in
   let unop = parse_unary_operator unopkind in
-  mk_unary_operator unop child
+  mk_unary_operator_expr unop child
 
 let parse_binary_operator ctx cursor =
   let lhs, rhs =
@@ -48,21 +48,21 @@ let parse_binary_operator ctx cursor =
   let lhs = ctx.expr_parser ctx lhs in
   let rhs = ctx.expr_parser ctx rhs in
   if binopkind = Clang.Assign then
-    mk_assign lhs rhs
+    mk_assign_expr lhs rhs
   else
     let binop = parse_binary_operator binopkind in
-    mk_binary_operator binop lhs rhs
+    mk_binary_operator_expr binop lhs rhs
 
 let parse_decl_ref_expr cursor =
   Clang.ext_decl_get_name cursor |>
   Clang.ext_declaration_name_get_as_identifier |>
-  mk_decl_ref
+  mk_decl_ref_expr
 
 let parse_implicit_cast_expr ctx cursor =
   Clang.list_of_children cursor |>
   List.hd |>
   ctx.expr_parser ctx |>
-  mk_implicit_cast
+  mk_implicit_cast_expr
 
 exception Error of Clang.clang_ext_stmtkind
 

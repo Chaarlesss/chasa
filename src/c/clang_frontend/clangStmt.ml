@@ -10,7 +10,7 @@ module type S = sig
 
   val mk_decl_stmt: decl list -> stmt_kind
 
-  val mk_expr: expr -> stmt_kind
+  val mk_expr_stmt: expr -> stmt_kind
 
   val mk_if_stmt: expr -> stmt -> stmt option -> stmt_kind
 
@@ -52,7 +52,7 @@ module Make(E: sig type expr end)(D: sig type decl end): (S with type expr = E.e
   let mk_decl_stmt decl =
     SDecl decl
 
-  let mk_expr expr =
+  let mk_expr_stmt expr =
     SExpr expr
 
   let mk_if_stmt cond_expr then_stmt else_stmt =

@@ -1,5 +1,5 @@
 (library
-  (name analyzer)
+  (name framework)
   (flags
     (:standard -open Lib -open Domain))
   (libraries lib domain))

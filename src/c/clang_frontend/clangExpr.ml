@@ -23,17 +23,17 @@ module type S = sig
   type expr
   type decl
 
-  val mk_integer_literal: int -> expr_kind
+  val mk_integer_literal_expr: int -> expr_kind
 
-  val mk_decl_ref: identifier -> expr_kind
+  val mk_decl_ref_expr: identifier -> expr_kind
 
-  val mk_implicit_cast: expr -> expr_kind
+  val mk_implicit_cast_expr: expr -> expr_kind
 
-  val mk_unary_operator: unop -> expr -> expr_kind
+  val mk_unary_operator_expr: unop -> expr -> expr_kind
 
-  val mk_binary_operator: binop -> expr -> expr -> expr_kind
+  val mk_binary_operator_expr: binop -> expr -> expr -> expr_kind
 
-  val mk_assign: expr -> expr -> expr_kind
+  val mk_assign_expr: expr -> expr -> expr_kind
 
   val expr_with_loc: expr_kind -> Clang.cxcursor -> expr
 
@@ -74,23 +74,24 @@ module Make(D: sig type decl end)(S: sig type stmt end): (S with type stmt = S.s
     | EImplicitCast: expr -> expr_kind
     | EAssign: expr * expr -> expr_kind
 
-  let mk_integer_literal i =
+  let mk_integer_literal_expr i =
     EIntegerLiteral i
 
-  let mk_decl_ref id =
+  let mk_decl_ref_expr id =
     EDeclRef id
 
-  let mk_implicit_cast expr =
+  let mk_implicit_cast_expr expr =
     EImplicitCast expr
 
-  let mk_unary_operator kind child =
+  let mk_unary_operator_expr kind child =
     EUnaryOperator (kind, child)
 
-  let mk_binary_operator kind lhs rhs =
+  let mk_binary_operator_expr kind lhs rhs =
     EBinaryOperator (kind, lhs, rhs)
 
-  let mk_assign lhs rhs =
+  let mk_assign_expr lhs rhs =
     EAssign (lhs, rhs)
+
 
   let expr_with_loc expr_kind expr_loc =
     { expr_kind; expr_loc }
