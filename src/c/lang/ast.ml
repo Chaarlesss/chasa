@@ -85,8 +85,11 @@ let register_decl_compare cmp =
 let register_decl_pp pp =
   Type.register_pp pp decl_pp_chain
 
+type pure_expr =
+  | Var of string
+
 type _ term_kind +=
-  | C_expr: expr -> expr term_kind
+  | C_expr: expr -> pure_expr term_kind
   | C_stmt: stmt -> unit term_kind
   | C_decl: decl -> unit term_kind
 
@@ -108,37 +111,6 @@ let () =
           | _ -> printer.f fmt t
         );
     }
-
-type unop =
-  | OPlus: unop
-  | OMinus: unop
-  | ONot: unop
-  | OLNot: unop
-
-type binop =
-  | OAdd: binop
-  | OSub: binop
-  | OMul: binop
-  | ODiv: binop
-  | ORem: binop
-  | OLAnd: binop
-  | OLOr: binop
-
-type expr_kind +=
-  | E_const_int of int
-  | E_var of string
-  | E_unop of unop * expr
-  | E_binop of binop * expr * expr
-  | E_cast of expr
-
-type stmt_kind +=
-  | S_block of stmt list
-  | S_decl of decl list
-  | S_assign of expr * expr
-  | S_if of expr * stmt * stmt option
-  | S_while of expr * stmt
-  | S_continue
-  | S_break
 
 type decl_kind +=
   | D_Function of stmt
