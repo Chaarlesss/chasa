@@ -1,5 +1,5 @@
 open ClangContext
-open ClangSyntax
+open ClangAST
 
 let parse_compound_stmt ctx cursor =
   let children = Clang.list_of_children_map (ctx.stmt_parser ctx) cursor in

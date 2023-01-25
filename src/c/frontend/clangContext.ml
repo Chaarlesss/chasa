@@ -1,4 +1,4 @@
-open ClangSyntax
+open ClangAST
 
 type t =
   {

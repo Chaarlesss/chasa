@@ -1,5 +1,5 @@
 open ClangContext
-open ClangSyntax
+open ClangAST
 
 let parse_function_decl ctx cursor =
   let body = Clang.ext_function_decl_get_body cursor in

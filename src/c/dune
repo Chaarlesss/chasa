@@ -2,7 +2,7 @@
   (name c)
   (flags
     (:standard))
-  (libraries clangFrontend))
+  (libraries framework))
 
 (env
   (dev

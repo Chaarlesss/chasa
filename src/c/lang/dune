@@ -1,8 +1,8 @@
 (library
   (name lang)
-  (flags -open Lib
+  (flags -open Lib -open Clang_frontend
     (:standard))
-  (libraries framework lib))
+  (libraries framework lib clang_frontend))
 
 (env
   (dev

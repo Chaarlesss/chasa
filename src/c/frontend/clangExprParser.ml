@@ -1,5 +1,5 @@
 open ClangContext
-open ClangSyntax
+open ClangAST
 
 let parse_unary_operator (kind: Clang.clang_ext_unaryoperatorkind) =
   match kind with

@@ -132,11 +132,10 @@ type expr_kind +=
   | E_cast of expr
 
 type stmt_kind +=
-  | S_skip
-  | S_seq of stmt * stmt
+  | S_block of stmt list
   | S_decl of decl list
   | S_assign of expr * expr
-  | S_if of expr * stmt * stmt
+  | S_if of expr * stmt * stmt option
   | S_while of expr * stmt
   | S_continue
   | S_break

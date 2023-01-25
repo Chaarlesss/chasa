@@ -1,8 +1,8 @@
 (library
-  (name clangFrontend)
+  (name clang_frontend)
   (flags
     (:standard))
-  (libraries clangml lang))
+  (libraries clangml))
 
 (env
   (dev
